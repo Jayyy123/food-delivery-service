@@ -5,7 +5,8 @@ const express = require('express'),
     userController = require('../controllers/user'),
     userVerificationController = require('../controllers/user_verification'),
     {menuController,restaurantController} = require('../controllers/restaurants');
-
+    
+const {placeOrder} = require("../controllers/order")
 module.exports = (requireAuth) => {
 
     /* authentication routes */
@@ -32,6 +33,9 @@ module.exports = (requireAuth) => {
     /* User Password routes */
     // router.post('/v1/user/password/reset/verification', userVerificationController.sendVerificationEmail);
     // router.post('/v1/user/password/reset/update', userVerificationController.resetPassword);
+    
+    //Order routes
+    router.post("/v1/placeorder/",placeOrder);
 
     /* Environment variable routes */
     router.get('/v1/env/host', oauthController.getHost);
