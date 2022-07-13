@@ -1,4 +1,5 @@
 const {menu,restaurants} = require('../models/restaurants');
+const commanUtils = require('../utils/common');
 
 const menuController = {
     getItem: (request,response) => {
@@ -101,7 +102,30 @@ const restaurantController = {
             restaurantData.restaurant_longitude = request.body.restaurant_longitude
         }
         if (request.body.restaurant_longitude !== undefined && request.body.restaurant_longitude !== '' ){
-            restaurantData.menu = request.body.menu
+            const { menu } = request.body;
+
+            if(menu.length > 0){
+                const arr = [];
+                menu.forEach(item => {
+                    const cont = commanUtils.isStringNonEmpty(item.item) && commanUtils.isStringNonEmpty(item.item_price)
+                    if (cont){
+                        console.log('===>hello>',cont);
+                        return arr.push(item);
+                    }
+                })
+                console.log('=====> how bro?',arr)
+
+                if(arr.length === menu.length){
+                    restaurantData.menu = menu;
+                }else{
+                    response.status(401);
+                    response.json({
+                        success: false,
+                        message: 'Item and Item price must not be empty',
+                    });
+                    return response;
+                }
+            }
         }
 
         if(Object.keys(restaurantData).length === 4){
@@ -119,7 +143,15 @@ const restaurantController = {
             return response;
             })
 
+        }else{
+            response.status(401);
+            response.json({
+                success: false,
+                message: 'something went wrong',
+            });
+            return response;
         }
+        return response;
 
     },
 }
