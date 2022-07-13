@@ -4,8 +4,14 @@ const schema = mongoose.Schema;
 
 
 const menuSchema = new mongoose.Schema({
-    item:String,
-    item_price:String,
+    item:{
+      type:String,
+      required:true,
+    },
+    item_price:{
+      type:String,
+      required:true,
+    },
 })
 
 const restaurantSchema = new schema({
@@ -21,9 +27,7 @@ const restaurantSchema = new schema({
       type: String,
       required: 'Email address is required',
   },
-    menu : {
-      type: [menuSchema]
-    },
+    menu : [menuSchema],
 },{timestamps:true})
 
 const menu = mongoose.model('menu', menuSchema);
