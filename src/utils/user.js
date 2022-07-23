@@ -25,4 +25,20 @@ const validateEmail = (email) => {
     return false;
 };
 
-module.exports = {validateEmail, userUtils}
+
+const getArray =  (list) => {
+
+    const array = [];
+
+    list.forEach(item => {
+
+        item.menu.forEach(i => array.push(i))
+
+    })
+    
+
+    return array;
+}
+
+
+module.exports = {validateEmail, userUtils, getArray}
