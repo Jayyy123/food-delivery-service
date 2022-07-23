@@ -4,7 +4,8 @@ const express = require('express'),
     oauthController = require('../controllers/oauth'),
     userController = require('../controllers/user'),
     userVerificationController = require('../controllers/user_verification'),
-    {menuController,restaurantController} = require('../controllers/restaurants');
+    {menuController,restaurantController} = require('../controllers/restaurants'),
+    { orderController } = require('../controllers/order');
 
 module.exports = (requireAuth) => {
 
@@ -26,8 +27,13 @@ module.exports = (requireAuth) => {
     /* restaurants routes */
     router.get('/v1/restaurants', requireAuth, restaurantController.getRestaurants);
     // router.post('/v1/restaurants', restaurantController.addRestaurant);
+    router.get('/v1/restaurants/menu', menuController.getAllMenus);
     // router.get('/v1/restaurants/menu', menuController.getItem);
     // router.post('/v1/restaurants/menu', menuController.addItem);
+
+    /* order routes */
+    router.get('/v1/orders', orderController.getOrders);
+    router.post('/v1/orders', orderController.makeOrder);
 
     /* User Password routes */
     // router.post('/v1/user/password/reset/verification', userVerificationController.sendVerificationEmail);

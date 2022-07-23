@@ -1,5 +1,6 @@
 const {menu,restaurants} = require('../models/restaurants');
 const commanUtils = require('../utils/common');
+const {getArray} = require('../utils/user')
 
 const menuController = {
     getItem: (request,response) => {
@@ -70,6 +71,22 @@ const menuController = {
             return response;
             }
         }
+    },
+    getAllMenus: (request, response) => {
+        restaurants.find()
+        .then( (result) => {
+            const menus = getArray(result)
+            response.status(201);
+            response.json({
+                success:true,
+                message: `There are ${menus.length} menus in total from across ${result.length} restaurants!`,
+                data: {
+                    menu: menus,
+                },
+            });
+            return response
+        })
+        .catch(err => console.log(err))
     }
 }
 
