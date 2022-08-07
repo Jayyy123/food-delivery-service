@@ -27,7 +27,7 @@ const port = process.env.PORT;
 mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true})
   .then(result => {
     app.listen(port)
-    console.log('listening')
+    console.log('listening',port)
   })
   .catch(err => console.log('eeerrrroorrr is',err))
 
