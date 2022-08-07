@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src/app.js",
     "dev-start": "nodemon ./src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 15000"
   },
   "keywords": [],
   "author": "mind-spa",
@@ -36,6 +36,8 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "mocha": "^10.0.0",
     "nodemon": "^2.0.18",
     "supertest": "^6.2.4"
