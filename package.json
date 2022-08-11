@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src/app.js",
     "dev-start": "nodemon ./src/app.js",
-    "test": "mocha --timeout 15000"
+    "test": "mocha ./Tests/test.js --timeout 15000"
   },
   "keywords": [],
   "author": "mind-spa",

@@ -150,7 +150,7 @@ describe('Restaurants', () => {
               done();
             });
       });
-      after((done) => process.exit())
   });
 
 });
+setTimeout(() => process.exit(),7000)
