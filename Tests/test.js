@@ -1,4 +1,4 @@
-const server = require('./src/app');
+const server = require('../src/app');
 process.env.NODE_ENV = 'test';
 
 let mongoose = require("mongoose");
@@ -7,7 +7,7 @@ let mongoose = require("mongoose");
 //Require the dev-dependencies
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-const user = require('./src/models/user');
+const user = require('../src/models/user');
 let should = chai.should();
 
 

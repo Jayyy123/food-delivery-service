@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build job
+  # Build and Test job
   build:
     runs-on: ubuntu-latest
     steps:
@@ -38,7 +38,9 @@ jobs:
         uses: actions/upload-pages-artifact@v1
       - name: Install dependencies
         run: npm install
-      - name: Run server
+
+      #  Testing
+      - name: Test server
         run: npm test
 
   # Deployment job
