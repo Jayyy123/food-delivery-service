@@ -45,7 +45,6 @@ describe('Signup a User', () => {
             .post('/dev/api/v1/user/signup')
             .send(newUser)
             .end((err, res) => {
-                console.log(res.body)
                     res.should.have.status(201);
                     res.body.should.be.a('object');
                     res.body.should.have.property('success');
@@ -98,10 +97,10 @@ describe('Restaurants', () => {
         chai.request(server)
             .get('/dev/api/v1/restaurants/')
             .end((err, res) => {
-                console.log('here')
                   res.should.have.status(200);
                   res.body.should.be.a('object');
               done();
+              
             });
       });
   });
@@ -111,7 +110,6 @@ describe('Restaurants', () => {
         chai.request(server)
             .get('/dev/api/v1/restaurants/menu')
             .end((err, res) => {
-                console.log('here')
                   res.should.have.status(201);
                   res.body.should.be.a('object');
               done();
@@ -141,7 +139,7 @@ describe('Restaurants', () => {
 
 
   describe('/GET orders', () => {
-      it('it should GET all the menus', (done) => {
+      it('it should GET all the orders', (done) => {
         chai.request(server)
             .get('/dev/api/v1/orders?id=' + newUser.email_id)
             .end((err, res) => {
@@ -152,8 +150,7 @@ describe('Restaurants', () => {
               done();
             });
       });
+      after((done) => process.exit())
   });
-
-  
 
 });
