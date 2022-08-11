@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build and Test job
+  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
@@ -39,9 +39,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      #  Testing
+  Test:
+    runs-on: ubuntu-latest
+    steps:   
       - name: Test server
-        run: npm test
+        run: mocha ./Tests/test.js --timeout 15000
 
   # Deployment job
   deploy:
