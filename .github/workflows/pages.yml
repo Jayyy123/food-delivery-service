@@ -42,6 +42,7 @@ jobs:
   #  Api Test
   Test:
       runs-on: ubuntu-latest
+      needs: build
       steps:
         - name: Test server
           run: npm test
