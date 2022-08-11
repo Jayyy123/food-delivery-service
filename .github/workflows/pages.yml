@@ -39,7 +39,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run server
-        run: npm start
+        run: npm test
 
   # Deployment job
   deploy:
