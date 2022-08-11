@@ -38,8 +38,13 @@ jobs:
         uses: actions/upload-pages-artifact@v1
       - name: Install dependencies
         run: npm install
-      - name: Run server
-        run: npm test
+
+  #  Api Test
+  Test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Test server
+          run: npm test
 
   # Deployment job
   deploy:
